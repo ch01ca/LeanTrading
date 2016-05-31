@@ -1,0 +1,79 @@
+﻿using QuantConnect.Data.Market;
+using QuantConnect.Indicators;
+using static Strategies.IchimokuKinkoHyoStrategy.IchimokuKinkoHyoSignal;
+
+namespace Strategies.IchimokuKinkoHyoStrategy
+{
+    public class IchimokuKinkoHyoConsolidated
+    {
+        private TradeBar _previousData;
+        private IchimokuKinkoHyo _previousIndicator;
+
+        private TradeBar _data;
+        private IchimokuKinkoHyo _indicator;
+
+        public bool IsReady => IsConsolidated ? _previousIndicator.IsReady && _indicator.IsReady : false;
+
+        public bool IsInitialized => _previousIndicator != null;
+
+        public bool IsConsolidated => _previousIndicator != null && _indicator != null;
+
+        public IchimokuKinkoHyoConsolidated(TradeBar data, IchimokuKinkoHyo indicator)
+        {
+            _previousData = data;
+            _previousIndicator = indicator;
+        }
+
+        public void Consolidate(TradeBar data, IchimokuKinkoHyo indicator)
+        {
+            _data = data;
+            _indicator = indicator;
+        }
+
+        public void RollConsolidationWindow()
+        {
+            _previousData = _data;
+            _previousIndicator = _indicator;
+        }
+
+        public SignalStrength BullishTenkanKijunCross()
+        {
+            return IchimokuKinkoHyoSignal.BullishTenkanKijunCross(_previousIndicator, _indicator);
+        }
+
+        public SignalStrength BearishTenkanKijunCross()
+        {
+            return IchimokuKinkoHyoSignal.BearishTenkanKijunCross(_previousIndicator, _indicator);
+        }
+
+        public SignalStrength BullishKijunCross(TradeBars data)
+        {
+            return IchimokuKinkoHyoSignal.BullishKijunCross(_previousIndicator, _indicator, _previousData.Price, _data.Price);
+        }
+
+        public SignalStrength BearishKijunCross(TradeBars data)
+        {
+            return IchimokuKinkoHyoSignal.BearishKijunCross(_previousIndicator, _indicator, _previousData.Price, _data.Price);
+        }
+
+        public SignalStrength BullishKumoBreakout(TradeBars data)
+        {
+            return IchimokuKinkoHyoSignal.BullishKumoBreakout(_previousIndicator, _indicator, _previousData.Price, _data.Price);
+        }
+
+        public SignalStrength BearishKumoBreakout(TradeBars data)
+        {
+            return IchimokuKinkoHyoSignal.BearishKumoBreakout(_previousIndicator, _indicator, _previousData.Price, _data.Price);
+        }
+
+        public SignalStrength BullishSenkouCross(TradeBars data)
+        {
+            return IchimokuKinkoHyoSignal.BullishSenkouCross(_previousIndicator, _indicator, _data.Price);
+        }
+
+        public SignalStrength BearishSenkouCross(TradeBars data)
+        {
+            return IchimokuKinkoHyoSignal.BearishSenkouCross(_previousIndicator, _indicator, _data.Price);
+        }
+    }
+}
