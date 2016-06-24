@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DynamicInterop, Version=0.7.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicInterop.0.7.4\lib\net40\DynamicInterop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="QuantConnect.Algorithm, Version=2.2.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\QuantConnect.Lean.2.2.0\lib\net45\QuantConnect.Algorithm.dll</HintPath>
       <Private>True</Private>
@@ -50,8 +54,17 @@
       <HintPath>..\packages\QuantConnect.Lean.2.2.0\lib\net45\QuantConnect.Logging.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RDotNet, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\R.NET.Community.1.6.5\lib\net40\RDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RDotNet.NativeLibrary, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\R.NET.Community.1.6.5\lib\net40\RDotNet.NativeLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,14 +73,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdaptiveMovingAverageStrategy\AdaptiveMovingAverageAlgorithm.cs" />
+    <Compile Include="ArimaGarchStrategy\ArimaGarchAlgorithm.cs" />
     <Compile Include="IchimokuKinkoHyoStrategy\IchimokuKinkoHyoAlgorithm.cs" />
     <Compile Include="IchimokuKinkoHyoStrategy\IchimokuKinkoHyoConsolidated.cs" />
     <Compile Include="IchimokuKinkoHyoStrategy\IchimokuKinkoHyoSignal.cs" />
+    <Compile Include="MundoStrategy\MundoAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoicFundamentalsStrategy\RoicFundamentalsAlgorithm.cs" />
+    <Compile Include="RoicFundamentalsStrategy\SecurityObject.cs" />
+    <Compile Include="SimpleMovingAverageCrossStrategy\SimpleMovingAverageCrossAlgorithm.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ArimaGarchStrategy\arima_garch.r" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

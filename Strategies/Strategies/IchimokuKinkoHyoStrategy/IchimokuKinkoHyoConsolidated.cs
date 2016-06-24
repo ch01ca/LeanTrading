@@ -6,17 +6,24 @@ namespace Strategies.IchimokuKinkoHyoStrategy
 {
     public class IchimokuKinkoHyoConsolidated
     {
+        public enum Direction
+        {
+            Bearish, Bullish
+        }
+
         private TradeBar _previousData;
         private IchimokuKinkoHyo _previousIndicator;
 
         private TradeBar _data;
         private IchimokuKinkoHyo _indicator;
 
-        public bool IsReady => IsConsolidated ? _previousIndicator.IsReady && _indicator.IsReady : false;
+        public bool IsReady => IsConsolidated && _previousIndicator.IsReady && _indicator.IsReady;
 
         public bool IsInitialized => _previousIndicator != null;
 
         public bool IsConsolidated => _previousIndicator != null && _indicator != null;
+
+        public Direction PriceDirection => _previousData.Price < _data.Price ? Direction.Bullish : Direction.Bearish;
 
         public IchimokuKinkoHyoConsolidated(TradeBar data, IchimokuKinkoHyo indicator)
         {
