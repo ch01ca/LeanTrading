@@ -53,32 +53,32 @@ namespace Strategies.IchimokuKinkoHyoStrategy
             return IchimokuKinkoHyoSignal.BearishTenkanKijunCross(_previousIndicator, _indicator);
         }
 
-        public SignalStrength BullishKijunCross(TradeBars data)
+        public SignalStrength BullishKijunCross()
         {
             return IchimokuKinkoHyoSignal.BullishKijunCross(_previousIndicator, _indicator, _previousData.Price, _data.Price);
         }
 
-        public SignalStrength BearishKijunCross(TradeBars data)
+        public SignalStrength BearishKijunCross()
         {
             return IchimokuKinkoHyoSignal.BearishKijunCross(_previousIndicator, _indicator, _previousData.Price, _data.Price);
         }
 
-        public SignalStrength BullishKumoBreakout(TradeBars data)
+        public SignalStrength BullishKumoBreakout()
         {
             return IchimokuKinkoHyoSignal.BullishKumoBreakout(_previousIndicator, _indicator, _previousData.Price, _data.Price);
         }
 
-        public SignalStrength BearishKumoBreakout(TradeBars data)
+        public SignalStrength BearishKumoBreakout()
         {
             return IchimokuKinkoHyoSignal.BearishKumoBreakout(_previousIndicator, _indicator, _previousData.Price, _data.Price);
         }
 
-        public SignalStrength BullishSenkouCross(TradeBars data)
+        public SignalStrength BullishSenkouCross()
         {
             return IchimokuKinkoHyoSignal.BullishSenkouCross(_previousIndicator, _indicator, _data.Price);
         }
 
-        public SignalStrength BearishSenkouCross(TradeBars data)
+        public SignalStrength BearishSenkouCross()
         {
             return IchimokuKinkoHyoSignal.BearishSenkouCross(_previousIndicator, _indicator, _data.Price);
         }
