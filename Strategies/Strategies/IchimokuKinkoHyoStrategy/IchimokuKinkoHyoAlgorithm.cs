@@ -11,30 +11,39 @@ namespace Strategies.IchimokuKinkoHyoStrategy
     public class IchimokuKinkoHyoAlgorithm : QCAlgorithm
     {
         private const int NumberOfSymbols = 10;
-        private const decimal FractionOfPortfolio = 0.25m;
+        private const decimal FractionOfPortfolio = 0.15m;
 
         private readonly ConcurrentDictionary<Symbol, TrendSelectionData> _selectionDatas =
             new ConcurrentDictionary<Symbol, TrendSelectionData>();
 
-        private readonly List<string> _symbols = new List<string>
+        private static readonly List<string> _rotatingSymbols = new List<string>
         {
-            "SPY",
+            "RUA",
             "GOOGL",
             "AAPL",
-            //"EDV",
             //"CAT",
             "NVO",
             //"INTC"
         };
+
+        private static readonly List<string> _hedgeSymbols = new List<string>
+        {
+            "EDV",
+            "SPLV"
+        };
+
+        private readonly IEnumerable<string> _symbols = _rotatingSymbols.Union(_hedgeSymbols);
+
+        private string _bench = "AAPL";
 
         private Chart _chart;
 
         public override void Initialize()
         {
             SetCash(10000);
-            SetStartDate(2005, 1, 1);
+            SetStartDate(1998, 1, 1);
             SetEndDate(DateTime.Now);
-            SetBenchmark("SPY");
+            //SetBenchmark("SPY");
 
             SetWarmup(44);
 
@@ -57,11 +66,17 @@ namespace Strategies.IchimokuKinkoHyoStrategy
 
         public void OnData(TradeBars data)
         {
-            foreach (var symbol in _symbols)
+            foreach (var symbol in _symbols.Where(s => data.ContainsKey(s)))
             {
                 _selectionDatas[symbol].Update(data[symbol], Portfolio[symbol].Quantity);
                 Securities[symbol].IsTradable = true;
             }
+
+            /*foreach (var symbol in _hedgeSymbols.Where(s => data.ContainsKey(s) && !Portfolio[s].Invested))
+            {
+                Log("BUY >> " + symbol);
+                SetHoldings(symbol, FractionOfPortfolio);
+            }*/
 
             if (IsWarmingUp)
             {
@@ -78,13 +93,16 @@ namespace Strategies.IchimokuKinkoHyoStrategy
                 var stopLoss = Portfolio[symbol].UnrealizedProfitPercent < -0.1m;
                 if (bullishToBearish || bearishToBullish || takeProfit || stopLoss)
                 {
-                    Log("Flat >> " + Securities[symbol].Price + " Profit: " + Portfolio[symbol].UnrealizedProfitPercent);
+                    Log("Flat >> " + Securities[symbol].Price + " Symbol " + symbol + " Profit: " + Portfolio[symbol].UnrealizedProfitPercent);
                     Liquidate(symbol);
                     Securities[symbol].IsTradable = false;
                 }
             }
 
-            var trending = _selectionDatas.Where(kvp => kvp.Value.IsReady && Securities[kvp.Key].IsTradable).Select(kvp => kvp).ToList();
+            var trending = _selectionDatas
+                .Where(kvp => kvp.Value.IsReady && Securities[kvp.Key].IsTradable)
+                .Select(kvp => kvp)
+                .ToList();
             trending.Sort((a, b) => a.Value.CompareTo(b.Value));
 
             var topTrending = trending.Take(NumberOfSymbols - Portfolio.Count);
@@ -93,23 +111,23 @@ namespace Strategies.IchimokuKinkoHyoStrategy
             {
                 if (security.Value.TrendDirection == TrendSelectionData.Direction.Bullish)
                 {
-                    Log("Buy >> " + Securities[security.Key].Price + " Profit: " + Portfolio[security.Key].UnrealizedProfitPercent);
+                    Log("Buy >> " + Securities[security.Key].Price + " Symbol " + security + " Profit: " + Portfolio[security.Key].UnrealizedProfitPercent);
                     SetHoldings(security.Key, FractionOfPortfolio);
                 }
-                else if (!security.Key.Value.Equals("NVO") && security.Value.TrendDirection == TrendSelectionData.Direction.Bearish)
+                else if (_rotatingSymbols.Contains(security.Key.Value) && security.Value.TrendDirection == TrendSelectionData.Direction.Bearish)
                 {
-                    Log("Sell >> " + Securities[security.Key].Price + " Profit: " + Portfolio[security.Key].UnrealizedProfitPercent);
+                    Log("Sell >> " + Securities[security.Key].Price + " Symbol " + security + " Profit: " + Portfolio[security.Key].UnrealizedProfitPercent);
                     SetHoldings(security.Key, -FractionOfPortfolio);
                 }
             }
 
-            Plot("ICH", "Price", data["SPY"].Price);
-            Plot("ICH", "SenkouA", _selectionDatas["SPY"]._ich.SenkouA);
-            Plot("ICH", "SenkouB", _selectionDatas["SPY"]._ich.SenkouB);
+            Plot("ICH", "Price", data[_bench].Price);
+            Plot("ICH", "SenkouA", _selectionDatas[_bench]._ich.SenkouA);
+            Plot("ICH", "SenkouB", _selectionDatas[_bench]._ich.SenkouB);
 
-            Plot("ICH", "ADX", _selectionDatas["SPY"]._adx);
-            Plot("ICH", "ADX.NegativeDirectionalIndex", _selectionDatas["SPY"]._adx.NegativeDirectionalIndex);
-            Plot("ICH", "ADX.PositiveDirectionalIndex", _selectionDatas["SPY"]._adx.PositiveDirectionalIndex);
+            Plot("ICH", "ADX", _selectionDatas[_bench]._adx);
+            Plot("ICH", "ADX.NegativeDirectionalIndex", _selectionDatas[_bench]._adx.NegativeDirectionalIndex);
+            Plot("ICH", "ADX.PositiveDirectionalIndex", _selectionDatas[_bench]._adx.PositiveDirectionalIndex);
         }
     }
 }

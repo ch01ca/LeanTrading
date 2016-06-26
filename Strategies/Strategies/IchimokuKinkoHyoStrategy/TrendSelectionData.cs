@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using QuantConnect;
 using QuantConnect.Data.Market;
 using QuantConnect.Indicators;

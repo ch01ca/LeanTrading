@@ -84,6 +84,14 @@
     <Compile Include="RoicFundamentalsStrategy\RoicFundamentalsAlgorithm.cs" />
     <Compile Include="RoicFundamentalsStrategy\SecurityObject.cs" />
     <Compile Include="SimpleMovingAverageCrossStrategy\SimpleMovingAverageCrossAlgorithm.cs" />
+    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\ISignal.cs" />
+    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\TrendVolatilityMultiCurrencyPortfolioAlgorithm.cs" />
+    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\OneShotTrigger.cs" />
+    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\ProfitTargetSignalcs.cs" />
+    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\RSISignal.cs" />
+    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\TradeProfile.cs" />
+    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\TradingAsset.cs" />
+    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\Volatility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ArimaGarchStrategy\arima_garch.r" />
