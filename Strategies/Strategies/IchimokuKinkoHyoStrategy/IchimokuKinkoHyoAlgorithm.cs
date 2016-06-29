@@ -16,23 +16,21 @@ namespace Strategies.IchimokuKinkoHyoStrategy
         private readonly ConcurrentDictionary<Symbol, TrendSelectionData> _selectionDatas =
             new ConcurrentDictionary<Symbol, TrendSelectionData>();
 
-        private static readonly List<string> _rotatingSymbols = new List<string>
+        private static readonly List<string> RotatingSymbols = new List<string>
         {
             "RUA",
             "GOOGL",
             "AAPL",
-            //"CAT",
             "NVO",
-            //"INTC"
         };
 
-        private static readonly List<string> _hedgeSymbols = new List<string>
+        private static readonly List<string> HedgeSymbols = new List<string>
         {
             "EDV",
             "SPLV"
         };
 
-        private readonly IEnumerable<string> _symbols = _rotatingSymbols.Union(_hedgeSymbols);
+        private readonly IEnumerable<string> _symbols = RotatingSymbols.Union(HedgeSymbols);
 
         private string _bench = "AAPL";
 
@@ -41,7 +39,7 @@ namespace Strategies.IchimokuKinkoHyoStrategy
         public override void Initialize()
         {
             SetCash(10000);
-            SetStartDate(1998, 1, 1);
+            SetStartDate(2004, 1, 1);
             SetEndDate(DateTime.Now);
             //SetBenchmark("SPY");
 
@@ -83,7 +81,7 @@ namespace Strategies.IchimokuKinkoHyoStrategy
                 return;
             }
 
-            foreach (var symbol in _symbols.Where(symbol => Portfolio[symbol].Invested))
+            foreach (var symbol in _symbols.Where(s => Portfolio[s].Invested))
             {
                 var bullishToBearish = Portfolio[symbol].IsLong
                     && _selectionDatas[symbol].TrendDirection == TrendSelectionData.Direction.Bearish;
@@ -114,7 +112,7 @@ namespace Strategies.IchimokuKinkoHyoStrategy
                     Log("Buy >> " + Securities[security.Key].Price + " Symbol " + security + " Profit: " + Portfolio[security.Key].UnrealizedProfitPercent);
                     SetHoldings(security.Key, FractionOfPortfolio);
                 }
-                else if (_rotatingSymbols.Contains(security.Key.Value) && security.Value.TrendDirection == TrendSelectionData.Direction.Bearish)
+                else if (security.Value.TrendDirection == TrendSelectionData.Direction.Bearish)
                 {
                     Log("Sell >> " + Securities[security.Key].Price + " Symbol " + security + " Profit: " + Portfolio[security.Key].UnrealizedProfitPercent);
                     SetHoldings(security.Key, -FractionOfPortfolio);

@@ -12,8 +12,10 @@ namespace Strategies.IchimokuKinkoHyoStrategy
             Bullish, Bearish, None
         }
 
-        private const decimal AdxThreshold = 20.0m;
+        private const decimal AdxLowerThreshold = 20.0m;
+        private const decimal AdxUpperThreshold = 50.0m;
         private const int VolumeLookbackPeriod = 5;
+        private const decimal Tolerance = 0.015m;
 
         private Symbol _symbol;
 
@@ -88,7 +90,7 @@ namespace Strategies.IchimokuKinkoHyoStrategy
 
             var tenkanKijunSignal = _consolidation.BullishTenkanKijunCross();
             var kijunSignal = _consolidation.BullishKijunCross();
-            var kumoSignal = Math.Max(_ich.SenkouA, _ich.SenkouB) < _data.Price;
+            var kumoSignal = _data.Price > Math.Max(_ich.SenkouA, _ich.SenkouB);
             var senkouSignal = _consolidation.BullishSenkouCross();
 
             /*var averageVolume = _volume.Sum() / _volume.Count;
@@ -99,7 +101,9 @@ namespace Strategies.IchimokuKinkoHyoStrategy
                 || kijunSignal == IchimokuKinkoHyoSignal.SignalStrength.Strong
                 || senkouSignal == IchimokuKinkoHyoSignal.SignalStrength.Strong;
 
-            var adxSignal = _adx > AdxThreshold && _adx.PositiveDirectionalIndex > _adx.NegativeDirectionalIndex;
+            var adxSignal = _adx > AdxLowerThreshold
+                && _adx < AdxUpperThreshold
+                && _adx.NegativeDirectionalIndex < _adx.PositiveDirectionalIndex * (1.0m - Tolerance);
 
             var vwapSignal = _data.Price < _vwap;
 
@@ -122,7 +126,7 @@ namespace Strategies.IchimokuKinkoHyoStrategy
 
             var tenkanKijunSignal = _consolidation.BearishTenkanKijunCross();
             var kijunSignal = _consolidation.BearishKijunCross();
-            var kumoSignal = Math.Min(_ich.SenkouA, _ich.SenkouB) > _data.Price;
+            var kumoSignal = _data.Price < Math.Min(_ich.SenkouA, _ich.SenkouB);
             var senkouSignal = _consolidation.BearishSenkouCross();
 
             /*var averageVolume = _volume.Sum() / _volume.Count;
@@ -133,7 +137,9 @@ namespace Strategies.IchimokuKinkoHyoStrategy
                 || kijunSignal == IchimokuKinkoHyoSignal.SignalStrength.Strong
                 || senkouSignal == IchimokuKinkoHyoSignal.SignalStrength.Strong;
 
-            var adxSignal = _adx > AdxThreshold && _adx.NegativeDirectionalIndex < _adx.PositiveDirectionalIndex;
+            var adxSignal = _adx > AdxLowerThreshold
+                && _adx < AdxUpperThreshold 
+                && _adx.NegativeDirectionalIndex > _adx.PositiveDirectionalIndex * (1.0m + Tolerance);
 
             var vwapSignal = _data.Price > _vwap;
 
