@@ -11,35 +11,32 @@ namespace Strategies.IchimokuKinkoHyoStrategy
     public class IchimokuKinkoHyoAlgorithm : QCAlgorithm
     {
         private const int NumberOfSymbols = 10;
-        private const decimal FractionOfPortfolio = 0.15m;
+        private const decimal FractionOfPortfolio = 1.0m;
 
         private readonly ConcurrentDictionary<Symbol, TrendSelectionData> _selectionDatas =
             new ConcurrentDictionary<Symbol, TrendSelectionData>();
 
         private static readonly List<string> RotatingSymbols = new List<string>
         {
-            "RUA",
-            "GOOGL",
-            "AAPL",
-            "NVO",
+            "SPY",
         };
 
         private static readonly List<string> HedgeSymbols = new List<string>
         {
-            "EDV",
-            "SPLV"
+            //"EDV",
+            //"SPLV"
         };
 
         private readonly IEnumerable<string> _symbols = RotatingSymbols.Union(HedgeSymbols);
 
-        private string _bench = "AAPL";
+        private string _bench = "SPY";
 
         private Chart _chart;
 
         public override void Initialize()
         {
             SetCash(10000);
-            SetStartDate(2004, 1, 1);
+            SetStartDate(1998, 1, 1);
             SetEndDate(DateTime.Now);
             //SetBenchmark("SPY");
 
@@ -50,6 +47,12 @@ namespace Strategies.IchimokuKinkoHyoStrategy
                 AddSecurity(SecurityType.Equity, symbol, Resolution.Daily);
                 _selectionDatas.AddOrUpdate(symbol, new TrendSelectionData(symbol));
             }
+
+            Schedule.On(DateRules.On(new DateTime(2000, 7, 1), new DateTime(2007, 10, 1)), TimeRules.BeforeMarketClose("SPY"), () =>
+            {
+                Log("Sell >> " + Securities["SPY"].Price + " Symbol " + "SPY");
+                SetHoldings("SPY", -FractionOfPortfolio);
+            });
 
             _chart = new Chart("ICH", ChartType.Overlay);
             _chart.AddSeries(new Series("Price", SeriesType.Line));
@@ -92,7 +95,8 @@ namespace Strategies.IchimokuKinkoHyoStrategy
                 if (bullishToBearish || bearishToBullish || takeProfit || stopLoss)
                 {
                     Log("Flat >> " + Securities[symbol].Price + " Symbol " + symbol + " Profit: " + Portfolio[symbol].UnrealizedProfitPercent);
-                    Liquidate(symbol);
+                    //Liquidate(symbol);
+                    LimitOrder(symbol, -Portfolio[symbol].Quantity, data[symbol].Price);
                     Securities[symbol].IsTradable = false;
                 }
             }
@@ -110,12 +114,14 @@ namespace Strategies.IchimokuKinkoHyoStrategy
                 if (security.Value.TrendDirection == TrendSelectionData.Direction.Bullish)
                 {
                     Log("Buy >> " + Securities[security.Key].Price + " Symbol " + security + " Profit: " + Portfolio[security.Key].UnrealizedProfitPercent);
-                    SetHoldings(security.Key, FractionOfPortfolio);
+                    //SetHoldings(security.Key, FractionOfPortfolio);
+                    LimitOrder(security.Key, (int)(Portfolio.Cash / data[security.Key].Price), data[security.Key].Price);
                 }
                 else if (security.Value.TrendDirection == TrendSelectionData.Direction.Bearish)
                 {
                     Log("Sell >> " + Securities[security.Key].Price + " Symbol " + security + " Profit: " + Portfolio[security.Key].UnrealizedProfitPercent);
-                    SetHoldings(security.Key, -FractionOfPortfolio);
+                    //SetHoldings(security.Key, -FractionOfPortfolio);
+                    LimitOrder(security.Key, -(int)(Portfolio.Cash / data[security.Key].Price), data[security.Key].Price);
                 }
             }
 

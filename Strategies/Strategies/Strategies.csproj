@@ -92,6 +92,9 @@
     <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\TradeProfile.cs" />
     <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\TradingAsset.cs" />
     <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\Volatility.cs" />
+    <Compile Include="VixIntradayStrategy\RollingWindow.cs" />
+    <Compile Include="VixIntradayStrategy\TrailingStop.cs" />
+    <Compile Include="VixIntradayStrategy\VixIntradayAlgorithm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ArimaGarchStrategy\arima_garch.r" />
