@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using QuantConnect;
 using QuantConnect.Algorithm;
+using QuantConnect.Brokerages;
 using QuantConnect.Data.Market;
 using QuantConnect.Indicators;
 using QuantConnect.Orders;
@@ -44,7 +45,8 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
             {
                 AddSecurity(SecurityType.Forex, symbol, _dataResolution);
                 Securities[symbol].FeeModel = new ConstantFeeModel(0.04m);
-                //SetBrokerageModel(BrokerageName.FxcmBrokerage);
+                Securities[symbol].SetLeverage(50.0m);
+                SetBrokerageModel(BrokerageName.FxcmBrokerage);
 
                 _rsi = RSI(symbol, 60, MovingAverageType.Exponential, _dataResolution);
 
@@ -72,7 +74,6 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
         /// </summary>
         public void OnData(TradeBars data)
         {
-
             foreach (var symbol in Symbols)
             {
                 //Create a trading asset package for each symbol 
