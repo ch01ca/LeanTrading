@@ -1,128 +1,138 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using QuantConnect;
 using QuantConnect.Algorithm;
+using QuantConnect.Brokerages;
+using QuantConnect.Data;
+using QuantConnect.Data.Custom;
+using QuantConnect.Orders.Fees;
+using Strategies.Data.Quandl;
 
 namespace Strategies.RotatingInverslyCorrelatedAssetsStrategy
 {
     public class RotatingInverslyCorrelatedAssetsAlgorithm : QCAlgorithm
     {
-        //Create variables for analyzing Nifty
-        CorrelationPair today = new CorrelationPair();
-        List<CorrelationPair> prices = new List<CorrelationPair>();
-        int minimumCorrelationHistory = 11;
+        private CorrelationPair _today;
+        private readonly List<CorrelationPair> _prices = new List<CorrelationPair>();
+        private const int MinimumCorrelationHistory = 11;
+
+        // Codes from Quandl
+        private const string Usdinr = "FRED/DEXINUS";
+        private const string Nifty = "NSE/NIFTY_50";
 
         public override void Initialize()
         {
             SetStartDate(1998, 1, 1);
             SetEndDate(DateTime.Now);
 
-            //Set the cash for the strategy:
-            SetCash(100000);
+            SetCash(10000);
 
-            //Define the symbol and "type" of our generic data:
-            AddData<USDINR>("USDINR");
-            AddData<Nifty>("NIFTY");
-            //public IEnumerable<BaseData> Get(Symbol symbol, Resolution resolution, DateTime startUtc, DateTime endUtc)
+            AddData<Quandl>(Nifty, Resolution.Daily);
+            AddData<QuandlFx>(Usdinr, Resolution.Daily);
+
+            Securities[Usdinr].FeeModel = new ConstantFeeModel(1.0m);
+            Securities[Nifty].FeeModel = new ConstantFeeModel(1.0m);
         }
 
-        public void OnData(USDINR data)
+        public override void OnData(Slice data)
         {
-            today = new CorrelationPair(data.Time);
-            today.Add("USDINR", data.Close);
-        }
+            if (!data.ContainsKey(Usdinr) || !data.ContainsKey(Nifty)) return;
 
-        public void OnData(Nifty data)
-        {
+            _today = new CorrelationPair(data.Time);
+            _today.Add(Usdinr, data[Usdinr].Price);
+
             try
             {
-                today.Add("NIFTY", data.Close);
-                if (today.Date == data.Time)
+                _today.Add(Nifty, data[Nifty].Close);
+                if (_today.Date == data.Time)
                 {
-                    prices.Add(today);
+                    Log("Date: " + data.Time + " Price: " + data[Nifty].Price);
+                    _prices.Add(_today);
 
-                    if (prices.Count > minimumCorrelationHistory)
+                    if (_prices.Count > MinimumCorrelationHistory)
                     {
-                        prices.RemoveAt(0);
+                        _prices.RemoveAt(0);
                     }
                 }
 
-                if (prices.Count < 2)
+                if (_prices.Count < 2)
                 {
                     return;
                 }
 
-                string maxAsset = "";
-                double maxGain = -9999;
+                var maxAsset = string.Empty;
+                var maxGain = double.MinValue;
 
-                foreach (string i in today.Prices.Keys)
+                foreach (var symbol in _today.Prices.Keys)
                 {
-                    double last = (from pair in prices select pair.Prices[i]).Last();
-                    double first = (from pair in prices select pair.Prices[i]).First();
-                    double gain = (last - first) / first;
-                    if (gain > maxGain)
-                    {
-                        maxAsset = i;
-                        maxGain = gain;
-                    }
+                    var last = (from pair in _prices select pair.Prices[symbol]).Last();
+                    var first = (from pair in _prices select pair.Prices[symbol]).First();
+                    var gain = (last - first) / first;
+
+                    if (!(gain > maxGain)) continue;
+
+                    maxAsset = symbol;
+                    maxGain = gain;
                 }
 
-                //Strategy
-                if (maxAsset != "")
+                if (!maxAsset.Equals(string.Empty))
                 {
                     CustomSetHoldings(maxAsset, 1, true);
                 }
             }
-            catch (Exception err)
+            catch (Exception ex)
             {
-                Debug("Error: " + err.Message);
+                Debug("Exception: " + ex.Message);
             }
         }
 
-        //Plot Nifty
         public override void OnEndOfDay()
         {
-            if (!today.Prices.ContainsKey("NIFTY")) return;
+            if (!_today.Prices.ContainsKey(Nifty)) return;
 
-            if (today.Prices["NIFTY"].Equals(0.0) && today.Date.DayOfWeek == DayOfWeek.Wednesday)
+            if (_today.Prices[Nifty] != 0 && _today.Date.DayOfWeek == DayOfWeek.Wednesday)
             {
-                Plot("NIFTY", today.Prices["NIFTY"]);
+                Plot("NIFTY", _today.Prices[Nifty]);
             }
-            if (today.Prices["USDINR"].Equals(0.0) && today.Date.DayOfWeek == DayOfWeek.Wednesday)
+            if (_today.Prices[Usdinr] != 0 && _today.Date.DayOfWeek == DayOfWeek.Wednesday)
             {
-                Plot("USDINR", today.Prices["USDINR"]);
+                Plot("USDINR", _today.Prices[Usdinr]);
             }
         }
 
         public void CustomSetHoldings(string symbol, decimal percentage, bool liquidateExistingHoldings = false)
         {
+            // TODO Use cash to determine position size?
             decimal cash = Portfolio.Cash;
             decimal currentHoldingQuantity = Portfolio[symbol].Quantity;
 
             //Range check values:
-            if (percentage > 1) percentage = 1;
-            if (percentage < -1) percentage = -1;
+            if (percentage > 1)
+            {
+                percentage = 1;
+            }
+            else if (percentage < -1)
+            {
+                percentage = -1;
+            }
 
-            //If they triggered a liquidate
             if (liquidateExistingHoldings)
             {
-                foreach (var holdingSymbol in Portfolio.Keys)
+                foreach (var holdingSymbol in Portfolio.Keys.Where(holdingSymbol => holdingSymbol != symbol))
                 {
-                    if (holdingSymbol != symbol)
-                    {
-                        //Go through all existing holdings, market order the inverse quantity
-                        Order(holdingSymbol, -Portfolio[holdingSymbol].Quantity);
-                    }
+                    //Go through all existing holdings, market order the inverse quantity
+                    Order(holdingSymbol, -Portfolio[holdingSymbol].Quantity);
                 }
             }
 
             //Now rebalance the symbol requested:
-            decimal targetHoldingQuantity = Math.Floor((percentage * Portfolio.TotalPortfolioValue) / Securities[symbol].Price);
+            var targetHoldingQuantity = Math.Floor(percentage * Portfolio.TotalPortfolioValue / Securities[symbol].Price);
 
-            decimal netHoldingQuantity = targetHoldingQuantity - currentHoldingQuantity;
+            var netHoldingQuantity = targetHoldingQuantity - currentHoldingQuantity;
             if (Math.Abs(netHoldingQuantity) > 0)
             {
-                Order(symbol, (int)netHoldingQuantity);
+                Order(symbol, (int) netHoldingQuantity);
             }
         }
     }
