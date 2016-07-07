@@ -6,8 +6,8 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
 {
     public class RsiSignal : ISignal
     {
-        private RelativeStrengthIndex _rsi;
-        private SecurityHolding _securityHolding;
+        private readonly RelativeStrengthIndex _rsi;
+        private readonly SecurityHolding _securityHolding;
 
         public RsiSignal(RelativeStrengthIndex rsi, SecurityHolding securityHolding)
         {

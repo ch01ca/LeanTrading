@@ -81,6 +81,7 @@
     <Compile Include="IchimokuKinkoHyoStrategy\IchimokuKinkoHyoConsolidated.cs" />
     <Compile Include="IchimokuKinkoHyoStrategy\IchimokuKinkoHyoSignal.cs" />
     <Compile Include="IchimokuKinkoHyoStrategy\TrendSelectionData.cs" />
+    <Compile Include="InternalBarStrengthStrategy\InternalBarStrengthAlgorithm.cs" />
     <Compile Include="MundoStrategy\MundoAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoicFundamentalsStrategy\RoicFundamentalsAlgorithm.cs" />
