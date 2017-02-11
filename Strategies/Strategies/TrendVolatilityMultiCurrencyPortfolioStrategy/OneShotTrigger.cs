@@ -17,14 +17,7 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
         {
             _signal.Scan(data);
 
-            if (_signal.Signal != _previousSignalType)
-            {
-                Signal = _signal.Signal;
-            }
-            else
-            {
-                Signal = SignalType.NoSignal;
-            }
+            Signal = _signal.Signal != _previousSignalType ? _signal.Signal : SignalType.NoSignal;
             _previousSignalType = _signal.Signal;
         }
 

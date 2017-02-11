@@ -2,6 +2,7 @@
 using System.Linq;
 using QuantConnect;
 using QuantConnect.Data.Market;
+using QuantConnect.Indicators;
 using QuantConnect.Orders;
 using QuantConnect.Securities;
 
@@ -45,14 +46,15 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
         /// Scan
         /// </summary>
         /// <param name="data"></param>
-        public void Scan(TradeBar data)
+        public void Scan(TradeBar data, Security symbol)
         {
             foreach (var tradeProfile in _tradeProfiles)
             {
+                tradeProfile.UpdateStopLoss(data.Close);
                 tradeProfile.CurrentPrice = data.Close;
             }
             MarkStopTicketsFilled();
-            EnterTradeSignal(data);
+            EnterTradeSignal(data, symbol);
             ExitTradeSignal(data);
             RemoveAllFinishedTrades();
         }
@@ -61,10 +63,10 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
         /// Executes all the logic when the Enter Signal is triggered
         /// </summary>
         /// <param name="data"></param>
-        public void EnterTradeSignal(TradeBar data)
+        public void EnterTradeSignal(TradeBar data, Security symbol)
         {
             EnterSignal.Scan(data);
-            if (EnterSignal.Signal == SignalType.Long || EnterSignal.Signal == SignalType.Short)
+            if (symbol.IsTradable && EnterSignal.Signal == SignalType.Long || EnterSignal.Signal == SignalType.Short)
             {
                 //Creates a new trade profile once it enters a trade
                 var profile = new TradeProfile(_symbol, _security.VolatilityModel.Volatility, _risk, data.Close, _maximumTradeSize);
@@ -111,12 +113,9 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
         /// </summary>
         public void MarkStopTicketsFilled()
         {
-            foreach (var tradeProfile in _tradeProfiles)
+            foreach (var tradeProfile in _tradeProfiles.Where(tradeProfile => tradeProfile.StopTicket.Status == OrderStatus.Filled))
             {
-                if (tradeProfile.StopTicket.Status == OrderStatus.Filled)
-                {
-                    tradeProfile.IsTradeFinished = true;
-                }
+                tradeProfile.IsTradeFinished = true;
             }
         }
 

@@ -10,13 +10,7 @@ namespace Strategies.RoicFundamentalsStrategy
 {
     public class RoicFundamentalsAlgorithm : QCAlgorithm
     {
-        // Notes
-
-        /* */
-
-        // User-editable Fields
-
-        private readonly Dictionary<string, decimal> _tickerDictionary = new Dictionary<string, decimal> // ticker, weighted holdings
+        private readonly Dictionary<string, decimal> _tickerDictionary = new Dictionary<string, decimal>
 	    {
             { "AAPL", 1.0m },
             { "NFLX", 1.0m },
@@ -29,16 +23,12 @@ namespace Strategies.RoicFundamentalsStrategy
         private double _polyC = 1.376;
         private readonly int _warmupdays = 30;
 
-        // Class Fields
-
         private DateTime _lastRebalanceTime = DateTime.MinValue;
         private readonly TimeSpan _rebalanceInterval = TimeSpan.FromDays(30);
         private readonly List<SecurityObject> _consideredSecuritiesList = new List<SecurityObject>();
         private List<SecurityObject> _winningSecuritiesList = new List<SecurityObject>();
         private List<SecurityObject> _losingSecuritiesList = new List<SecurityObject>();
         private bool _firstOnDataCall = true;
-
-        // Initializer
 
         public override void Initialize()
         {
@@ -55,15 +45,9 @@ namespace Strategies.RoicFundamentalsStrategy
                 Securities[ticker].SetDataNormalizationMode(DataNormalizationMode.TotalReturn);
                 Securities[ticker].SetLeverage(1);
 
-                // ACTIVATE THESE
-                //ROIC _roic = ROIC(entry.key, Resolution.Daily)
-                //EnterpriseValue _enterprisevalue = ENTVAL(ticker, Resolution.Daily)
-                //InvestedCapital _investedcapital = INVCAP(ticker, Resolution,Daily)
-
-                // DEACTIVATE THESE
-                var roic = 0.0;
-                var enterpriseValue = 0.0;
-                var investedCapital = 0.0;
+                ROIC _roic = ROIC(entry.key, Resolution.Daily);
+                EnterpriseValue _enterprisevalue = ENTVAL(ticker, Resolution.Daily);
+                InvestedCapital _investedcapital = INVCAP(ticker, Resolution.Daily);
 
                 _consideredSecuritiesList.Add(
                     new SecurityObject
@@ -79,7 +63,17 @@ namespace Strategies.RoicFundamentalsStrategy
             }
         }
 
-        // Event-Driven Methods
+        public IEnumerable<Symbol> FineSelectionFunction(IEnumerable<FineFundamental> fine)
+        {
+            // sort descending by P/E ratio
+            var sortedByPeRatio = fine.OrderByDescending(x => x.ValuationRatios.PERatio);
+
+            // take the top entries from our sorted collection
+            var topFine = sortedByPeRatio.Take(NumberOfSymbolsFine);
+
+            // we need to return only the symbol objects
+            return topFine.Select(x => x.Symbol);
+        }
 
         public void OnData(TradeBars data)
         {
@@ -109,8 +103,6 @@ namespace Strategies.RoicFundamentalsStrategy
             TakeAction();
         }
 
-        // Rebalance Rules Methods
-
         public void DefaultWinnersAndLosersToEmptyList()
         {
             _winningSecuritiesList = new List<SecurityObject>();
@@ -123,11 +115,11 @@ namespace Strategies.RoicFundamentalsStrategy
             {
                 security.DetermineValue(_polyA, _polyB, _polyC);
 
-                if (security.IsOvervalued == false)
+                if (!security.IsOvervalued)
                 {
                     _winningSecuritiesList.Add(security);
                 }
-                else // Overvalued == true
+                else
                 {
                     _losingSecuritiesList.Add(security);
                 }
@@ -136,8 +128,6 @@ namespace Strategies.RoicFundamentalsStrategy
 
         public void TakeAction()
         {
-            // Sell our losing securities
-
             foreach (var security in _losingSecuritiesList)
             {
                 if (Portfolio[security.Ticker].HoldStock)
@@ -145,8 +135,6 @@ namespace Strategies.RoicFundamentalsStrategy
                     SetHoldings(security.Ticker, 0.0m);
                 }
             }
-
-            // Buy our winning securities
 
             var totalweightings = CalculateTotalWeightings();
 
@@ -158,12 +146,10 @@ namespace Strategies.RoicFundamentalsStrategy
                 }
 
                 var percentageofportfolio = _tickerDictionary[security.Ticker] / totalweightings;
-                SetHoldings(security.Ticker, Convert.ToDouble(percentageofportfolio));
+                SetHoldings(security.Ticker, (double) percentageofportfolio);
             }
 
         }
-
-        // Helper Methods
 
         public decimal CalculateTotalWeightings()
         {

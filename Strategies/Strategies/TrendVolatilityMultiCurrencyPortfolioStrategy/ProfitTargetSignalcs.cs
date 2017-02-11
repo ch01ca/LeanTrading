@@ -4,8 +4,8 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
 {
     public class ProfitTargetSignalExit : IExitSignal
     {
-        private TradeProfile _tradeProfile;
-        private decimal _targetProfitLossRatio;
+        private readonly TradeProfile _tradeProfile;
+        private readonly decimal _targetProfitLossRatio;
 
         public ProfitTargetSignalExit() { }
 
@@ -17,14 +17,7 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
 
         public void Scan(TradeBar data)
         {
-            if (_tradeProfile.ProfitLossRatio > _targetProfitLossRatio)
-            {
-                Signal = SignalType.Exit;
-            }
-            else
-            {
-                Signal = SignalType.NoSignal;
-            }
+            Signal = _tradeProfile.ProfitLossRatio > _targetProfitLossRatio ? SignalType.Exit : SignalType.NoSignal;
         }
 
         public SignalType Signal { get; private set; }

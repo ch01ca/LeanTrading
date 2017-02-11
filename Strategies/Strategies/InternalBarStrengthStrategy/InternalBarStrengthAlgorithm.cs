@@ -1,6 +1,7 @@
 ﻿using System;
 using QuantConnect;
 using QuantConnect.Algorithm;
+using QuantConnect.Data;
 using QuantConnect.Data.Market;
 using QuantConnect.Indicators;
 
@@ -23,13 +24,18 @@ namespace Strategies.InternalBarStrengthStrategy
             _rsi = new RelativeStrengthIndex(Symbol, 3, MovingAverageType.Simple);
         }
 
-        public void OnData(TradeBars data)
+        public override void OnData(Slice data)
         {
             var ibs = data[Symbol].Close - data[Symbol].Low / data[Symbol].High - data[Symbol].Low;
 
             if (Portfolio[Symbol].Invested)
             {
                 Liquidate(Symbol);
+                return;
+            }
+
+            if (data.Time.DayOfWeek == DayOfWeek.Friday)
+            {
                 return;
             }
 

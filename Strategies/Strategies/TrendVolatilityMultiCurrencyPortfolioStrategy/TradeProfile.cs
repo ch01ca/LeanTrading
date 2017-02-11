@@ -1,4 +1,5 @@
-﻿using QuantConnect;
+﻿using System;
+using QuantConnect;
 using QuantConnect.Orders;
 
 namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
@@ -10,28 +11,29 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
         public OrderTicket OpenTicket, StopTicket, ExitTicket;
         //Keeps track of the current price and the direction of the trade
         public decimal CurrentPrice;
-        public int TradeDirection;
+        public int TradeDirection => OpenTicket.Quantity > 0 ? 1 : OpenTicket.Quantity < 0 ? -1 : 0;
         public Symbol TradeSymbol;
-        private bool isTradeFinished;
 
         private decimal _risk;
         private int _maximumTradeQuantity;
         protected decimal _volatility;
 
-
-        // Calclate the quantity based on the target risk in dollars.
         public int Quantity
         {
             get
             {
                 if (_volatility == 0) return 0;
                 long quantity = (long)(_risk / _volatility);
-                if (quantity > _maximumTradeQuantity) return _maximumTradeQuantity;
-                return (int)quantity;
+                //Check if the value for the maximum trade quantity is less than zero to avoid placing 0 value trade
+                if (quantity > _maximumTradeQuantity)
+                {
+                    return _maximumTradeQuantity < 1000 ? 1000 : _maximumTradeQuantity;
+                }
+
+                return (int)quantity < 1000 ? 1000 : (int)quantity;
             }
         }
 
-        //What is the stoploss move from current price
         public decimal DeltaStopLoss
         {
             get
@@ -41,9 +43,6 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
             }
         }
 
-        /// <summary>
-        /// Calculates  the Profit:Loss ratio
-        /// </summary>
         public decimal ProfitLossRatio
         {
             get
@@ -56,37 +55,27 @@ namespace Strategies.TrendVolatilityMultiCurrencyPortfolioStrategy
             }
         }
 
-        /// <summary>
-        /// Exit signal for each trade
-        /// </summary>
+        public void UpdateStopLoss(decimal latestPrice)
+        {
+            if ((latestPrice > CurrentPrice && TradeDirection > 0)
+                || (latestPrice < CurrentPrice && TradeDirection < 0))
+            {
+                StopTicket.Update(
+                    new UpdateOrderFields
+                    {
+                        StopPrice = StopTicket.Get(OrderField.StopPrice) + TradeDirection * Math.Abs(latestPrice - CurrentPrice)
+                    });
+            }
+        }
+
         public ISignal ExitSignal
         {
             get;
             set;
         }
 
-        public bool IsTradeFinished
-        {
-            get
-            {
-                return isTradeFinished;
-            }
+        public bool IsTradeFinished { get; set; }
 
-            set
-            {
-                isTradeFinished = value;
-            }
-        }
-
-        /// <summary>
-        /// Create a new tradeProfile and limit the maximum risk.
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <param name="volatility"></param>
-        /// <param name="risk"></param>
-        /// <param name="currentPrice"></param>
-        /// <param name="maximumTradeSize"></param>
-        /// <param name="exitSignal"></param>
         public TradeProfile(Symbol symbol, decimal volatility, decimal risk, decimal currentPrice, decimal maximumTradeSize)
         {
             TradeSymbol = symbol;
