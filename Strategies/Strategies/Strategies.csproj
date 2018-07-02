@@ -35,9 +35,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accord, Version=3.3.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Accord.3.3.0\lib\net45\Accord.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Accord, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.8.0\lib\net46\Accord.dll</HintPath>
     </Reference>
     <Reference Include="Accord.Extensions.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Accord.Extensions.Core.3.0.1\lib\net45\Accord.Extensions.Core.dll</HintPath>
@@ -51,33 +50,142 @@
       <HintPath>..\packages\Accord.Extensions.Statistics.3.0.1\lib\net45\Accord.Extensions.Statistics.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Accord.MachineLearning, Version=3.3.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Accord.MachineLearning.3.3.0\lib\net45\Accord.MachineLearning.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Accord.Fuzzy, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Fuzzy.3.8.0\lib\net46\Accord.Fuzzy.dll</HintPath>
     </Reference>
-    <Reference Include="Accord.Math, Version=3.3.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Accord.Math.3.3.0\lib\net45\Accord.Math.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Accord.Genetic, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Genetic.3.8.0\lib\net46\Accord.Genetic.dll</HintPath>
     </Reference>
-    <Reference Include="Accord.Math.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Accord.Math.3.3.0\lib\net45\Accord.Math.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Accord.MachineLearning, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.MachineLearning.3.8.0\lib\net46\Accord.MachineLearning.dll</HintPath>
     </Reference>
-    <Reference Include="Accord.Neuro, Version=3.3.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Accord.Neuro.3.3.0\lib\net45\Accord.Neuro.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Accord.Math, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.0\lib\net46\Accord.Math.dll</HintPath>
     </Reference>
-    <Reference Include="Accord.Statistics, Version=3.3.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Accord.Statistics.3.3.0\lib\net45\Accord.Statistics.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Accord.Math.Core, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.0\lib\net46\Accord.Math.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Neuro, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Neuro.3.8.0\lib\net46\Accord.Neuro.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Statistics, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Statistics.3.8.0\lib\net46\Accord.Statistics.dll</HintPath>
+    </Reference>
+    <Reference Include="AsyncIO, Version=0.0.0.0, Culture=neutral, PublicKeyToken=44a94435bd6f33f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\AsyncIO.0.1.40\lib\net40\AsyncIO.dll</HintPath>
+    </Reference>
+    <Reference Include="CloneExtensions, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloneExtensions.1.4.2\lib\net46\CloneExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Brokerages.2.4.3642\lib\net452\CSharpAPI.dll</HintPath>
     </Reference>
     <Reference Include="DotImaging.Primitives2D, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotImaging.Primitives2D.4.8.2\lib\net45\DotImaging.Primitives2D.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\DotImaging.Primitives2D.4.8.3\lib\net45\DotImaging.Primitives2D.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="DynamicInterop, Version=0.7.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DynamicInterop.0.7.4\lib\net40\DynamicInterop.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="EngineIoClientDotNet, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EngineIoClientDotNet.1.0.6\lib\net45\EngineIoClientDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect, Version=2.1.3.0, Culture=neutral, PublicKeyToken=38d18473284c1ca7, processorArchitecture=MSIL">
+      <HintPath>..\packages\fasterflect.2.1.3\lib\net40\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FSharp.Core.4.3.4\lib\net45\FSharp.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.AWT.WinForms, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.AWT.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Beans, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Beans.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Charsets, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Cldrdata, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Cldrdata.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Corba, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Corba.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Jdbc, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Localedata, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Localedata.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Management, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Media, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Misc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Naming, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Naming.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Nashorn, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Nashorn.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Remoting, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Remoting.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.SwingAWT, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Tools, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Bind, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Bind.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Crypto, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Parse, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Parse.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Transform, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Transform.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.WebServices, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.XPath, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime.JNI, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.JNI.dll</HintPath>
     </Reference>
     <Reference Include="ILNumerics.Computing, Version=4.8.0.0, Culture=neutral, PublicKeyToken=8d9bf50ef854734d, processorArchitecture=MSIL">
       <HintPath>..\packages\ILNumerics.4.8.0.0\lib\ILNumerics.Computing.dll</HintPath>
@@ -107,13 +215,23 @@
       <HintPath>..\packages\ILNumerics.4.8.0.0\lib\ILNumerics.Toolboxes.Statistics.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MathNet.Numerics, Version=3.13.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.3.13.1\lib\net40\MathNet.Numerics.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MathNet.Filtering, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Filtering.0.4.0\lib\net40\MathNet.Filtering.dll</HintPath>
     </Reference>
-    <Reference Include="NodaTime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
-      <HintPath>..\packages\NodaTime.2.0.0-alpha20160729\lib\net45\NodaTime.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MathNet.Numerics, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.4.4.0\lib\net461\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="NetMQ, Version=4.0.0.1, Culture=neutral, PublicKeyToken=a6decef4ddc58b3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetMQ.4.0.0.1\lib\net40\NetMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.3\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NodaTime, Version=2.2.6.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodaTime.2.2.6\lib\net45\NodaTime.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\ILNumerics.4.8.0.0\lib\OpenTK.dll</HintPath>
@@ -123,25 +241,65 @@
       <HintPath>..\packages\ILNumerics.4.8.0.0\lib\OpenTK.GLControl.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="QuantConnect.Algorithm, Version=2.2.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\QuantConnect.Lean.2.2.0\lib\net45\QuantConnect.Algorithm.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Python.Runtime, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.pythonnet.1.0.5.7\lib\Python.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="QuantConnect.Common, Version=2.2.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\QuantConnect.Lean.2.2.0\lib\net45\QuantConnect.Common.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="QLNet, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QLNet.1.10.0\lib\net45\QLNet.dll</HintPath>
     </Reference>
-    <Reference Include="QuantConnect.Configuration, Version=2.2.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\QuantConnect.Lean.2.2.0\lib\net45\QuantConnect.Configuration.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="QuantConnect.Algorithm, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Algorithm.2.4.3642\lib\net452\QuantConnect.Algorithm.dll</HintPath>
     </Reference>
-    <Reference Include="QuantConnect.Indicators, Version=2.2.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\QuantConnect.Lean.2.2.0\lib\net45\QuantConnect.Indicators.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="QuantConnect.Algorithm.CSharp, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Algorithm.CSharp.2.4.3642\lib\net452\QuantConnect.Algorithm.CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="QuantConnect.Logging, Version=2.2.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\QuantConnect.Lean.2.2.0\lib\net45\QuantConnect.Logging.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="QuantConnect.Algorithm.Framework, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Algorithm.Framework.2.4.3642\lib\net452\QuantConnect.Algorithm.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.AlgorithmFactory, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.AlgorithmFactory.2.4.3642\lib\net452\QuantConnect.AlgorithmFactory.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Api, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Api.2.4.3642\lib\net452\QuantConnect.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Brokerages, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Brokerages.2.4.3642\lib\net452\QuantConnect.Brokerages.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Common, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Lean.Engine.2.4.3642\lib\net452\QuantConnect.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Compression, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Compression.2.4.3642\lib\net452\QuantConnect.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Configuration, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Configuration.2.4.3642\lib\net452\QuantConnect.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Fxcm, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Brokerages.2.4.3642\lib\net452\QuantConnect.Fxcm.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Indicators, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Indicators.2.4.3642\lib\net452\QuantConnect.Indicators.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Jupyter, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\QuantConnect.Lean.2.4.3642\lib\net452\QuantConnect.Jupyter.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Lean.Engine, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Lean.Engine.2.4.3642\lib\net452\QuantConnect.Lean.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Lean.Launcher, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Lean.2.4.3642\lib\net452\QuantConnect.Lean.Launcher.exe</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Logging, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Logging.2.4.3642\lib\net452\QuantConnect.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Messaging, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Messaging.2.4.3642\lib\net452\QuantConnect.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.Queues, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Queues.2.4.3642\lib\net452\QuantConnect.Queues.dll</HintPath>
+    </Reference>
+    <Reference Include="QuantConnect.ToolBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuantConnect.Lean.2.4.3642\lib\net452\QuantConnect.ToolBox.exe</HintPath>
     </Reference>
     <Reference Include="RDotNet, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\R.NET.Community.1.6.5\lib\net40\RDotNet.dll</HintPath>
@@ -151,89 +309,194 @@
       <HintPath>..\packages\R.NET.Community.1.6.5\lib\net40\RDotNet.NativeLibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RestSharp, Version=106.2.2.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.2.2\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SevenZipSharp, Version=0.64.3890.29348, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL">
+      <HintPath>..\packages\SevenZipSharp.0.64\lib\SevenZipSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SocketIoClientDotNet, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SocketIoClientDotNet.1.0.6\lib\net45\SocketIoClientDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine, Version=0.10.0.0, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.ClientEngine.Core.0.10.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.4.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Specialized, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Specialized.4.3.0\lib\net46\System.Collections.Specialized.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Console, Version=4.0.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.1\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.NameResolution, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.NameResolution.4.3.0\lib\net46\System.Net.NameResolution.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Security.4.3.0\lib\net46\System.Net.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Thread, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Thread.4.3.0\lib\net46\System.Threading.Thread.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.ThreadPool, Version=4.0.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.ThreadPool.4.3.0\lib\net46\System.Threading.ThreadPool.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="websocket-sharp, Version=1.0.4.0, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocketSharpFork.1.0.4.0\lib\net35\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSocket4Net, Version=0.15.2.11, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocket4Net.0.15.2\lib\net45\WebSocket4Net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdaptiveMovingAverageStrategy\AdaptiveMovingAverageAlgorithm.cs" />
-    <Compile Include="ArimaGarchStrategy\ArimaGarchAlgorithm.cs" />
+    <Compile Include="Indicators\Alligator.cs" />
+    <Compile Include="Indicators\FuzzyEngine.cs" />
+    <Compile Include="Indicators\InstantTrend.cs" />
+    <Compile Include="Indicators\PivotPoints.cs" />
+    <Compile Include="Indicators\SuperSmoothedDoubleStochastic.cs" />
+    <Compile Include="Indicators\WilliamsFractals.cs" />
+    <Compile Include="Strategies\AdaptiveMovingAverageStrategy\AdaptiveMovingAverageAlgorithm.cs" />
+    <Compile Include="Strategies\ArimaGarchStrategy\ArimaGarchAlgorithm.cs" />
     <Compile Include="BollingerBandsEngine.cs" />
-    <Compile Include="CFDStrategy\CfdAlgorithm.cs" />
-    <Compile Include="CointegratedPairsStrategy\AugmentedDickeyFuller.cs" />
-    <Compile Include="CointegratedPairsStrategy\CointegratedPairsAlgorithm.cs" />
-    <Compile Include="CointegratedPairsStrategy\RidgeRegression.cs" />
-    <Compile Include="CointegrationStrategy\CointegrationAlgorithm.cs" />
+    <Compile Include="Strategies\CFDStrategy\CfdAlgorithm.cs" />
+    <Compile Include="Strategies\CointegratedPairsStrategy\AugmentedDickeyFuller.cs" />
+    <Compile Include="Strategies\CointegratedPairsStrategy\CointegratedPairsAlgorithm.cs" />
+    <Compile Include="Strategies\CointegratedPairsStrategy\RidgeRegression.cs" />
+    <Compile Include="Strategies\CointegrationStrategy\CointegrationAlgorithm.cs" />
     <Compile Include="Data\Quandl\QuandlFx.cs" />
     <Compile Include="DBN.cs" />
     <Compile Include="DPM\Algorithm.cs" />
     <Compile Include="DPM\DownsideProtectionModel.cs" />
     <Compile Include="ElliotWave.cs" />
-    <Compile Include="EndPointResolverV20.cs" />
-    <Compile Include="FisherTransformStrategy\FisherTransformAlgorithm.cs" />
+    <Compile Include="MeanShiftSupportLines.cs" />
+    <Compile Include="Strategies\FisherTransformStrategy\FisherTransformAlgorithm.cs" />
     <Compile Include="GARCH.cs" />
     <Compile Include="HiddenMarkovModelPositionSizing.cs" />
-    <Compile Include="HullMovingAverage.cs" />
-    <Compile Include="IchimokuKinkoHyoStrategy\IchimokuKinkoHyoAlgorithm.cs" />
-    <Compile Include="IchimokuKinkoHyoStrategy\IchimokuKinkoHyoConsolidated.cs" />
-    <Compile Include="IchimokuKinkoHyoStrategy\IchimokuKinkoHyoSignal.cs" />
-    <Compile Include="IchimokuKinkoHyoStrategy\TrendSelectionData.cs" />
-    <Compile Include="InternalBarStrengthStrategy\InternalBarStrengthAlgorithm.cs" />
-    <Compile Include="LogReturnAlgorithm.cs" />
-    <Compile Include="MomentumZScoreAlgorithm.cs" />
+    <Compile Include="Strategies\IchimokuKinkoHyoStrategy\IchimokuKinkoHyoAlgorithm.cs" />
+    <Compile Include="Strategies\IchimokuKinkoHyoStrategy\IchimokuKinkoHyoConsolidated.cs" />
+    <Compile Include="Strategies\IchimokuKinkoHyoStrategy\IchimokuKinkoHyoSignal.cs" />
+    <Compile Include="Strategies\IchimokuKinkoHyoStrategy\TrendSelectionData.cs" />
+    <Compile Include="Strategies\InternalBarStrengthStrategy\InternalBarStrengthAlgorithm.cs" />
+    <Compile Include="Strategies\LogReturnAlgorithm.cs" />
+    <Compile Include="Strategies\MomentumZScoreAlgorithm.cs" />
     <Compile Include="Orders\TrailingStopOrder.cs" />
-    <Compile Include="SchaffTrendCycleIndicator.cs" />
-    <Compile Include="VolatilityAdjustedMovingAverage.cs" />
-    <Compile Include="VolatilityAlgorithm.cs" />
-    <Compile Include="VxvPricePredictionStrategy\KNeighborsRegressor.cs" />
-    <Compile Include="LeveragedETFDecayStrategy\LeveragedETFDecayAlgorithm.cs" />
-    <Compile Include="MundoStrategy\MundoAlgorithm.cs" />
-    <Compile Include="MundoStrategy\SymbolData.cs" />
-    <Compile Include="PivotPointsStrategy\PivotPoints.cs" />
-    <Compile Include="PivotPointsStrategy\PivotPointsAlgorithm.cs" />
+    <Compile Include="Indicators\SchaffTrendCycle.cs" />
+    <Compile Include="Signals\CCISignal.cs" />
+    <Compile Include="Signals\FuzzySignal.cs" />
+    <Compile Include="Signals\WilliamsFractalsSignal.cs" />
+    <Compile Include="Indicators\VolatilityAdjustedMovingAverage.cs" />
+    <Compile Include="Strategies\SimpleRiskParityStrategy.cs" />
+    <Compile Include="Strategies\VolatilityAlgorithm.cs" />
+    <Compile Include="VolatilityModels\AverageTrueRangeVolatilityModel.cs" />
+    <Compile Include="VolatilityModels\ThreeSigmaVolatilityModel.cs" />
+    <Compile Include="VolatilityModels\VarianceVolatilityModel.cs" />
+    <Compile Include="Strategies\VxvPricePredictionStrategy\KNeighborsRegressor.cs" />
+    <Compile Include="Strategies\LeveragedETFDecayStrategy\LeveragedETFDecayAlgorithm.cs" />
+    <Compile Include="Strategies\MundoStrategy\MundoAlgorithm.cs" />
+    <Compile Include="Strategies\MundoStrategy\SymbolData.cs" />
+    <Compile Include="Strategies\PivotPointsStrategy\PivotPoints.cs" />
+    <Compile Include="Strategies\PivotPointsStrategy\PivotPointsAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoicFundamentalsStrategy\RoicFundamentalsAlgorithm.cs" />
-    <Compile Include="RoicFundamentalsStrategy\SecurityObject.cs" />
-    <Compile Include="RotatingInverslyCorrelatedAssetsStrategy\CorrelationPair.cs" />
-    <Compile Include="RotatingInverslyCorrelatedAssetsStrategy\DollarRupee.cs" />
-    <Compile Include="RotatingInverslyCorrelatedAssetsStrategy\Nifty.cs" />
-    <Compile Include="RotatingInverslyCorrelatedAssetsStrategy\RotatingInverslyCorrelatedAssetsAlgorithm.cs" />
-    <Compile Include="SimpleMovingAverageCrossStrategy\SimpleMovingAverageCrossAlgorithm.cs" />
-    <Compile Include="StandardDeviationMeanReversionStrategy\StandardDeviationMeanReversionAlgorithm.cs" />
-    <Compile Include="SuperSmoothedDoubleStochasticStrategy\Main.cs" />
-    <Compile Include="SuperSmoothedDoubleStochasticStrategy\SuperSmoothedDoubleStochastic.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\AverageTrueRangeVolatilityModel.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\ISignal.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\StochasticRSI.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\TrendVolatilityMultiCurrencyPortfolioAlgorithm.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\OneShotTrigger.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\ProfitTargetSignalcs.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\RsiSignal.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\TradeProfile.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\TradingAsset.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\VarianceVolatilityModel.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\ThreeSigmaVolatilityModel.cs" />
-    <Compile Include="TrendVolatilityMultiCurrencyPortfolioStrategy\VwapSignal.cs" />
-    <Compile Include="UniversalInvestmentStrategy\UniversalInvestmentAlgorithm.cs" />
-    <Compile Include="VixIntradayStrategy\RollingWindow.cs" />
-    <Compile Include="VixIntradayStrategy\TrailingStop.cs" />
-    <Compile Include="VixIntradayStrategy\VixIntradayAlgorithm.cs" />
-    <Compile Include="VwapAlgorithm.cs" />
-    <Compile Include="FractalChannel.cs" />
+    <Compile Include="Strategies\RoicFundamentalsStrategy\RoicFundamentalsAlgorithm.cs" />
+    <Compile Include="Strategies\RoicFundamentalsStrategy\SecurityObject.cs" />
+    <Compile Include="Strategies\RotatingInverslyCorrelatedAssetsStrategy\CorrelationPair.cs" />
+    <Compile Include="Strategies\RotatingInverslyCorrelatedAssetsStrategy\DollarRupee.cs" />
+    <Compile Include="Strategies\RotatingInverslyCorrelatedAssetsStrategy\Nifty.cs" />
+    <Compile Include="Strategies\RotatingInverslyCorrelatedAssetsStrategy\RotatingInverslyCorrelatedAssetsAlgorithm.cs" />
+    <Compile Include="Strategies\SimpleMovingAverageCrossStrategy\SimpleMovingAverageCrossAlgorithm.cs" />
+    <Compile Include="Strategies\StandardDeviationMeanReversionStrategy\StandardDeviationMeanReversionAlgorithm.cs" />
+    <Compile Include="Strategies\SuperSmoothedDoubleStochasticStrategy\Main.cs" />
+    <Compile Include="Strategies\SuperSmoothedDoubleStochasticStrategy\SuperSmoothedDoubleStochastic.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\AverageTrueRangeVolatilityModel.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\ISignal.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\StochasticRSI.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\TrendVolatilityMultiCurrencyPortfolioAlgorithm.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\OneShotTrigger.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\ProfitTargetSignalcs.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\RsiSignal.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\TradeProfile.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\TradingAsset.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\VarianceVolatilityModel.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\ThreeSigmaVolatilityModel.cs" />
+    <Compile Include="Strategies\TrendVolatilityMultiCurrencyPortfolioStrategy\VwapSignal.cs" />
+    <Compile Include="Strategies\UniversalInvestmentStrategy\UniversalInvestmentAlgorithm.cs" />
+    <Compile Include="Strategies\VixIntradayStrategy\RollingWindow.cs" />
+    <Compile Include="Strategies\VixIntradayStrategy\TrailingStop.cs" />
+    <Compile Include="Strategies\VixIntradayStrategy\VixIntradayAlgorithm.cs" />
+    <Compile Include="Indicators\FractalChannel.cs" />
     <Compile Include="Run.cs" />
-    <Compile Include="VxvPricePredictionStrategy\QuandlVixContract.cs" />
-    <Compile Include="VxvPricePredictionStrategy\VxvPricePredictionAlgorithm.cs" />
-    <Compile Include="VxvPricePredictionStrategy\YangZhang.cs" />
+    <Compile Include="Strategies\VxvPricePredictionStrategy\QuandlVixContract.cs" />
+    <Compile Include="Strategies\VxvPricePredictionStrategy\VxvPricePredictionAlgorithm.cs" />
+    <Compile Include="Strategies\VxvPricePredictionStrategy\YangZhang.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Alphas\ConstantAlphaModel.py" />
+    <Content Include="Alphas\EmaCrossAlphaModel.py" />
+    <Content Include="Alphas\HistoricalReturnsAlphaModel.py" />
+    <Content Include="Alphas\MacdAlphaModel.py" />
+    <Content Include="Alphas\PairsTradingAlphaModel.py" />
+    <Content Include="Alphas\RsiAlphaModel.py" />
+    <Content Include="CoarseUniverseGenerator\exclusions.txt" />
+    <Content Include="Execution\ImmediateExecutionModel.py" />
+    <Content Include="Execution\StandardDeviationExecutionModel.py" />
+    <Content Include="Execution\VolumeWeightedAveragePriceExecutionModel.py" />
+    <Content Include="nPython.exe" />
+    <Content Include="Risk\MaximumDrawdownPercentPerSecurity.py" />
+    <Content Include="Snippets.txt" />
+    <Content Include="Visualizer\QuantConnect.Visualizer.py" />
+    <Content Include="Visualizer\__init__.py" />
+    <None Include="Accord.dll.config" />
     <None Include="app.config" />
-    <None Include="ArimaGarchStrategy\arima_garch.r" />
+    <None Include="Strategies\ArimaGarchStrategy\arima_garch.r" />
+    <None Include="config.json" />
+    <None Include="NLog.config" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -254,15 +517,17 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Accord.3.3.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.3.0\build\Accord.targets')" />
+  <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Accord.3.3.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.3.0\build\Accord.targets'))" />
-    <Error Condition="!Exists('..\packages\NodaTime.2.0.0-alpha20160729\build\NodaTime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NodaTime.2.0.0-alpha20160729\build\NodaTime.targets'))" />
+    <Error Condition="!Exists('..\packages\Accord.3.8.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.8.0\build\Accord.targets'))" />
+    <Error Condition="!Exists('..\packages\QuantConnect.pythonnet.1.0.5.7\build\QuantConnect.pythonnet.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\QuantConnect.pythonnet.1.0.5.7\build\QuantConnect.pythonnet.targets'))" />
+    <Error Condition="!Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets'))" />
   </Target>
-  <Import Project="..\packages\NodaTime.2.0.0-alpha20160729\build\NodaTime.targets" Condition="Exists('..\packages\NodaTime.2.0.0-alpha20160729\build\NodaTime.targets')" />
+  <Import Project="..\packages\QuantConnect.pythonnet.1.0.5.7\build\QuantConnect.pythonnet.targets" Condition="Exists('..\packages\QuantConnect.pythonnet.1.0.5.7\build\QuantConnect.pythonnet.targets')" />
+  <Import Project="..\packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets" Condition="Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -33,9 +33,9 @@ namespace Strategies
                 : price < _bb.LowerBand + (_bb.MiddleBand - _bb.LowerBand) / 2m ? ZoneType.Sell : ZoneType.Indeterminate;
         }
 
-        public ZoneType CurrentBollingerBandsDirection(decimal price)
+        public BollingerBandsDirection CurrentBollingerBandsDirection(decimal price)
         {
-            return ;
+            return BollingerBandsDirection.Flat;
         }
     }
 }

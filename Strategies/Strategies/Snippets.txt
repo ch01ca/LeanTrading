@@ -1,0 +1,57 @@
+﻿var tb = new TradeBar {
+    EndTime = data[symbol].EndTime,
+    High = data[symbol].High,
+    Low = data[symbol].Low,
+    Close = data[symbol].Close
+};
+
+Schedule.On(DateRules.Every(DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday),
+    TimeRules.AfterMarketOpen(symbol, -120d), () =>
+{
+    _tradingAssets[symbol].IsTradable = false;
+    // make untradeable
+});
+            	
+Schedule.On(DateRules.Every(DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday),
+    TimeRules.AfterMarketOpen(symbol, -60d), () =>
+{
+    _tradingAssets[symbol].IsTradable = false;
+    Liquidate(symbol);
+    // make untradeable
+});
+
+Schedule.On(DateRules.Every(DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday),
+    TimeRules.AfterMarketOpen(symbol, 120d), () =>
+{
+    // make tradeable
+    _tradingAssets[symbol].IsTradable = true;
+});
+                
+Schedule.On(DateRules.Every(DayOfWeek.Friday), TimeRules.BeforeMarketClose(symbol, 120d), () =>
+{
+    _tradingAssets[symbol].IsTradable = false;
+});
+
+Schedule.On(DateRules.Every(DayOfWeek.Friday), TimeRules.BeforeMarketClose(symbol, 60d), () =>
+{
+    _tradingAssets[symbol].IsTradable = false;
+    Liquidate(symbol);
+    //_tradingAssets[symbol].Liquidate();
+    // make untradeable
+});
+
+var vama = new VolatilityAdjustedMovingAverage(symbol, sma, rsi, sd);
+                
+var hourConsolidator = new TickConsolidator(TimeSpan.FromMinutes(60));
+hourConsolidator.DataConsolidated += vama.OnHour;
+SubscriptionManager.AddConsolidator(symbol, hourConsolidator);
+            	
+var dailyConsolidator = new TickConsolidator(TimeSpan.FromDays(1));
+dailyConsolidator.DataConsolidated += vama.OnDaily;
+SubscriptionManager.AddConsolidator(symbol, dailyConsolidator);
+            	
+var hc = new TradeBarConsolidator(TimeSpan.FromMinutes(60));
+hc.DataConsolidated += vama.OnHour;
+            	
+var dc = new TradeBarConsolidator(TimeSpan.FromDays(1));
+dc.DataConsolidated += vama.OnDaily;
